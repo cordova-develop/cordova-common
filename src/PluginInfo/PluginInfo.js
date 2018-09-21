@@ -284,8 +284,7 @@ function PluginInfo (dirname) {
                     return pods.attrib[key] === undefined ? acc : Object.assign({}, acc, {[key]: pods.attrib[key]});
                 }, {});
                 libraries = pods.findall('pod').map(function (t) {
-                    return ['name', 'spec', 'tag', 'branch', 'commit', 'configurations', 'git',
-                        'podspec', 'path', 'swift-version', 'options'].reduce(function (acc, key) {
+                    return Object.keys(t.attrib).reduce(function (acc, key) {
                         return t.attrib[key] === undefined ? acc : Object.assign({}, acc, {[key]: t.attrib[key]});
                     }, {});
                 }).reduce(function (acc, val) {
